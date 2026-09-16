@@ -1,6 +1,14 @@
 # Alterworld Enterprises portfolio
 
-A static, responsive product portfolio with the selected Alterworld logo, six product links, and GitHub and itch.io profile links. No personal name, email, analytics, cookies, or backend is included.
+A static, responsive product portfolio with the selected Alterworld logo, six product links, GitHub and itch.io profile links, and a contact form. The page uses the brand rather than a personal name. The recipient email is present in the contact form action; no mailbox password or API key is included.
+
+## Contact form
+
+The form in `dist/index.html` sends name, reply email, and message to `jason.jones@alterworldenterprises.com` through https://formsubmit.co/. Native HTML validation requires all three fields. FormSubmit's default reCAPTCHA remains enabled, with an additional hidden honeypot. No automatic reply is sent to the visitor. FormSubmit handles submission errors; successful submissions return to `https://www.alterworldenterprises.com/contact-thanks.html`.
+
+Activation is required: submit the form once and confirm the activation email in the recipient inbox. If the mailbox is still being provisioned, complete activation once Outlook works. Until confirmed, delivery is not verified. After activation, submit a fresh test and verify it reaches the inbox and Reply addresses the visitor. FormSubmit can provide an opaque endpoint in its confirmation email to replace the recipient address in the public form action.
+
+Contact submissions are processed by FormSubmit, whose documentation states it retains submissions for 30 days. The public form discloses this delivery provider. See https://formsubmit.co/documentation. Both the Azure site and Sites preview use this same form; the confirmation redirect goes to the public Azure website.
 
 ## Content
 
@@ -23,7 +31,7 @@ To add an idea, put an `<article class="pipeline-item">` inside the relevant `.l
 
 ## Azure deployment
 
-The site is prepared for Azure Static Web Apps, but it has not been deployed to Azure. The Azure CLI was signed into a different work account when checked. Use the intended Alterworld account and its subscription before creating resources.
+The public site is deployed to Azure Static Web Apps at https://www.alterworldenterprises.com/ from the `main` branch of `jayjonesvip/alterworld-enterprises`. Its existing GitHub Actions workflow deploys `dist/` on each push. No Azure API is required for the contact form. For a new deployment elsewhere:
 
 1. Put this folder in its own GitHub repository.
 2. In the intended Azure account, create a Static Web App using the Free plan and connect that repository.
