@@ -10,7 +10,11 @@ Activation is required: submit the form once and confirm the activation email in
 
 Contact submissions are processed by FormSubmit, whose documentation states it retains submissions for 30 days. The public form discloses this delivery provider. See https://formsubmit.co/documentation. Both the Azure site and Sites preview use this same form; the confirmation redirect goes to the public Azure website.
 
-## Content
+## Search visibility
+
+The canonical site URL is `https://www.alterworldenterprises.com/`. The homepage includes search and sharing metadata plus JSON-LD for the brand, website, portfolio page, and six selected products. `dist/robots.txt` allows crawling and points to `dist/sitemap.xml`. The sitemap contains the homepage only: Products, Pipeline, and Contact are sections of that same page, and the form confirmation page carries `noindex`. Keep the sitemap date aligned with meaningful content updates. No search-engine verification token or automatic Search Console submission is included.
+
+## Products and links
 
 - Cage Grind: https://cagegrind.com/ — repository `jayjonesvip/cage-warrior`.
 - ZomVox: https://zomvox.com/.
