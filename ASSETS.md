@@ -22,3 +22,5 @@ The user selected the two-doorway Threshold concept. `dist/assets/alterworld-thr
 Final extraction prompt:
 
 > Use case: background-extraction. From the provided approved Alterworld Enterprises logo, extract ONLY the cyan two-doorway symbol at the left. Preserve exactly the geometry, relative positions, proportions, cyan/light-blue colors, and open doorframe negative spaces of that symbol. Remove all text, all dark background and all diffuse glow. Deliver one crisp clean symbol on real transparent alpha background, square canvas with about 8 percent margin, suitable as a browser favicon. Flat solid fills with precise edges. This is production asset extraction of the approved logo, not a redesign; do not invent a letter A, ring, additional shapes, shadow, text, gradients, lighting, mockup or background.
+
+- `dist/assets/ominous-realms.png`: existing Ominous Realms title artwork from the owner’s `jayjonesvip/OminousRealmsRedux` repository (`assets/logo.png`), copied from the finished local game on 2026-09-17; live at https://ominousrealms.com/assets/logo.png.
