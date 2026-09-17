@@ -1,6 +1,6 @@
 # Alterworld Enterprises portfolio
 
-A static, responsive product portfolio with the selected Alterworld logo, six product links, GitHub and itch.io profile links, and a contact form. The page uses the brand rather than a personal name. The recipient email is present in the contact form action; no mailbox password or API key is included.
+A static, responsive product portfolio with the selected Alterworld logo, seven product links, GitHub and itch.io profile links, and a contact form. The page uses the brand rather than a personal name. The recipient email is present in the contact form action; no mailbox password or API key is included.
 
 ## Contact form
 
@@ -12,7 +12,7 @@ Contact submissions are processed by FormSubmit, whose documentation states it r
 
 ## Search visibility
 
-The canonical site URL is `https://www.alterworldenterprises.com/`. The homepage includes search and sharing metadata plus JSON-LD for the brand, website, portfolio page, and six selected products. `dist/robots.txt` allows crawling and points to `dist/sitemap.xml`. The sitemap contains the homepage only: Products, Pipeline, and Contact are sections of that same page, and the form confirmation page carries `noindex`. Keep the sitemap date aligned with meaningful content updates. No search-engine verification token or automatic Search Console submission is included.
+The canonical site URL is `https://www.alterworldenterprises.com/`. The homepage includes search and sharing metadata plus JSON-LD for the brand, website, portfolio page, and seven selected products. `dist/robots.txt` allows crawling and points to `dist/sitemap.xml`. The sitemap contains the homepage only: Products, Pipeline, and Contact are sections of that same page, and the form confirmation page carries `noindex`. Keep the sitemap date aligned with meaningful content updates. No search-engine verification token or automatic Search Console submission is included.
 
 ## Products and links
 
@@ -20,6 +20,7 @@ The canonical site URL is `https://www.alterworldenterprises.com/`. The homepage
 - ZomVox: https://zomvox.com/.
 - PitBlend: https://pitblend.com/ — repository `jayjonesvip/RubLab`.
 - FantasyToolbelt: https://fantasytoolbelt.com/ — repository `jayjonesvip/fantasy-football`.
+- Who Plays Tonight: https://whoplaystonight.com/ — repository `jayjonesvip/whoplaystonight`.
 - GitHub profile: https://github.com/jayjonesvip.
 - itch.io profile: https://lightningjay.itch.io/.
 - Desert Survival: https://lightningjay.itch.io/desert-survival.

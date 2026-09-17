@@ -1,5 +1,7 @@
 # Asset sources
 
+- `dist/assets/who-plays-tonight.svg`: existing logo copied from the owner's `jayjonesvip/whoplaystonight` repository (`public/logo-mark.svg`) on 2026-09-17; also served at https://whoplaystonight.com/logo-mark.svg.
+
 Retrieved 2026-09-16 from user-supplied product websites:
 
 - `dist/assets/cage-grind.png`: https://cagegrind.com/assets/cage-grind-social-card.png

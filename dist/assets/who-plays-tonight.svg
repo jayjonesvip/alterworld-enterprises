@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Who Plays Tonight logo</title>
+  <desc id="desc">A bright green football on a dark rounded square.</desc>
+  <rect width="64" height="64" rx="16" fill="#111410"/>
+  <path d="M13 35C17 20 28 12 45 13c5 1 7 3 7 8 1 17-7 28-22 30-7 1-12-1-15-6-2-3-3-6-2-10Z" fill="#b7f34a"/>
+  <path d="M19 43 46 18M27 28l9 9M31 24l9 9M23 32l9 9" fill="none" stroke="#111410" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
