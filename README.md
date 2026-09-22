@@ -25,7 +25,7 @@ The canonical site URL is `https://www.alterworldenterprises.com/`. The homepage
 - GitHub profile: https://github.com/jayjonesvip.
 - itch.io profile: https://lightningjay.itch.io/.
 - Desert Survival: https://lightningjay.itch.io/desert-survival.
-- Alien Invasion: Cleveland: https://lightningjay.itch.io/alien-invasion-cleveland-rpg.
+- Lake Effect Invasion: https://lakeeffectinvasion.com/ — repository `jayjonesvip/alien-invasion-cleveland-rpg`. Formerly Alien Invasion: Cleveland; the existing product entry now uses the current name, artwork, and standalone site.
 
 Edit `dist/index.html` for product text and links; edit `dist/styles.css` for styling. Everything in `dist/` can be deployed as static files. No install or build is required.
 
