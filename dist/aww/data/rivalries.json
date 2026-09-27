@@ -1,0 +1,46 @@
+[
+  {
+    "id": "_0JR0NKSNQ",
+    "wid": "_0JE0W06OK",
+    "wname": "Ric Flair",
+    "a": "E",
+    "aid": "_0JE0W06PD",
+    "aname": "Vince MacMahon",
+    "adate": "2001-12-10",
+    "reason": "wrestler owns one half of rivals company",
+    "rcode": 6
+  },
+  {
+    "id": "_0JR0NM71G",
+    "wid": "_0JE0W06OM",
+    "wname": "Tajiri",
+    "a": "E",
+    "aid": "_0JE0W06PP",
+    "aname": "William Regal",
+    "adate": "2001-12-10",
+    "reason": "Rival set wrestler up",
+    "rcode": 2
+  },
+  {
+    "id": "_0JR0NMNKR",
+    "wid": "_0JE0W06OQ",
+    "wname": "Chris Jericho",
+    "a": "E",
+    "aid": "_0JE0W06PA",
+    "aname": "The Rock",
+    "adate": "2001-12-10",
+    "reason": "Rival Cheated against wrestler to win a match",
+    "rcode": 4
+  },
+  {
+    "id": "_0JR0NN9JW",
+    "wid": "_0JE0W06OW",
+    "wname": "Hunter Hearst Helmsley",
+    "a": "E",
+    "aid": "_0JE0W06P0",
+    "aname": "Kurt Angle",
+    "adate": "2001-12-10",
+    "reason": "Rival hurt a family member of wrestler",
+    "rcode": 3
+  }
+]

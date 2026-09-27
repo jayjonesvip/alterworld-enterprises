@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "item": "Create Wrestler",
+    "rel": "_R_"
+  },
+  {
+    "id": "3",
+    "item": "Match History",
+    "rel": "_O_"
+  },
+  {
+    "id": "2",
+    "item": "Cheat Codes",
+    "rel": "_O_"
+  },
+  {
+    "id": "4",
+    "item": "Exhibition Match",
+    "rel": "_R_"
+  },
+  {
+    "id": "5",
+    "item": "Career Mode",
+    "rel": "_R_"
+  },
+  {
+    "id": "6",
+    "item": "Tag Team",
+    "rel": "_R_"
+  },
+  {
+    "id": "7",
+    "item": "Franchise Manager",
+    "rel": "_R_"
+  },
+  {
+    "id": "8",
+    "item": "PPV Creator",
+    "rel": "_R_"
+  },
+  {
+    "id": "9",
+    "item": "Rivalry Generator",
+    "rel": "_O_"
+  },
+  {
+    "id": "10",
+    "item": "Import/Export",
+    "rel": "_O_"
+  },
+  {
+    "id": "11",
+    "item": "View Wrestlers",
+    "rel": "_O_"
+  },
+  {
+    "id": "12",
+    "item": "Information",
+    "rel": "_O_"
+  }
+]

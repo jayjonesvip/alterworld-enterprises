@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090c10">
+  <meta name="description" content="A playable browser reconstruction of the freeware Visual FoxPro wrestling simulator AlterWorld Wrestling.">
+  <link rel="canonical" href="https://www.alterworldenterprises.com/aww/">
+  <meta property="og:title" content="AlterWorld Wrestling — Web Reconstruction">
+  <meta property="og:description" content="Play a browser reconstruction built from the preserved AlterWorld Wrestling v8.6 data.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.alterworldenterprises.com/aww/">
+  <title>AlterWorld Wrestling — Web Reconstruction</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to game</a>
+  <header class="topbar">
+    <button class="brand" type="button" data-nav="home" aria-label="AlterWorld Wrestling home">
+      <span class="brand-mark">A/W</span>
+      <span>ALTERWORLD <b>WRESTLING</b></span>
+    </button>
+    <nav aria-label="Game sections">
+      <button type="button" data-nav="setup">Exhibition</button>
+      <button type="button" data-nav="roster">Roster</button>
+      <button type="button" data-nav="missions">Missions</button>
+      <button type="button" data-nav="history">History</button>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="view hero-view active" data-view="home" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <p class="kicker">V8.6 DATA · REBUILT FOR THE BROWSER</p>
+        <h1 id="home-title">Choose the moves.<br><em>Watch the match unfold.</em></h1>
+        <p>Turn-based wrestling reconstructed from the original Visual FoxPro tables, commentary, roster, missions, and documentation.</p>
+        <div class="hero-actions">
+          <button class="primary" type="button" data-nav="setup">Start exhibition</button>
+          <button type="button" data-nav="roster">Browse the recovered roster</button>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Recovered game data summary">
+        <span class="version">8.6</span>
+        <strong>Anniversary Edition data</strong>
+        <dl><div><dt>Wrestlers</dt><dd id="count-wrestlers">—</dd></div><div><dt>Moves</dt><dd id="count-moves">—</dd></div><div><dt>Missions</dt><dd id="count-missions">—</dd></div></dl>
+      </div>
+    </section>
+
+    <section class="view setup-view" data-view="setup" aria-labelledby="setup-title">
+      <div class="view-heading"><div><p class="kicker">EXHIBITION MATCH</p><h2 id="setup-title">Book the matchup.</h2></div><p>Select two different wrestlers and a match type.</p></div>
+      <div class="setup-grid">
+        <label class="select-card"><span>Player one</span><select id="player-select"></select><div id="player-preview" class="mini-profile"></div></label>
+        <div class="versus">VS</div>
+        <label class="select-card"><span>Opponent</span><select id="opponent-select"></select><div id="opponent-preview" class="mini-profile"></div></label>
+      </div>
+      <fieldset class="match-types"><legend>Match type</legend><label><input type="radio" name="match-type" value="Pinfall" checked> Pinfall</label><label><input type="radio" name="match-type" value="Hardcore"> Hardcore</label></fieldset>
+      <button class="primary start-match" id="start-match" type="button">Ring the bell</button>
+    </section>
+
+    <section class="view match-view" data-view="match" aria-labelledby="match-title">
+      <div class="match-header"><div><p class="kicker" id="match-type-label">PINFALL</p><h2 id="match-title">Exhibition match</h2></div><span id="turn-counter">TURN 01</span></div>
+      <div class="scoreboard">
+        <article class="wrestler-score player"><div class="portrait" id="player-portrait"></div><div><h3 id="player-name"></h3><p id="player-specialty"></p><div class="health"><i id="player-health"></i></div><small id="player-hp"></small></div></article>
+        <div class="match-clock"><span>LIVE</span><strong id="momentum-label">EVEN</strong></div>
+        <article class="wrestler-score opponent"><div><h3 id="opponent-name"></h3><p id="opponent-specialty"></p><div class="health"><i id="opponent-health"></i></div><small id="opponent-hp"></small></div><div class="portrait" id="opponent-portrait"></div></article>
+      </div>
+      <div class="match-grid">
+        <section class="commentary-panel" aria-labelledby="commentary-title"><h3 id="commentary-title">Match commentary</h3><ol id="commentary" aria-live="polite"></ol></section>
+        <aside class="controls-panel"><h3>Your move</h3><p id="move-hint">Choose an available move.</p><div id="move-buttons" class="move-buttons"></div><button id="finisher-button" class="finisher" type="button" hidden></button><button id="pin-button" class="pin" type="button" hidden>Attempt the pin</button><button id="rematch-button" class="primary" type="button" hidden>Rematch</button></aside>
+      </div>
+    </section>
+
+    <section class="view" data-view="roster" aria-labelledby="roster-title"><div class="view-heading"><div><p class="kicker">RECOVERED DATABASE</p><h2 id="roster-title">The roster.</h2></div><label class="search-label">Search <input id="roster-search" type="search" placeholder="Name, federation, specialty"></label></div><div id="roster-grid" class="roster-grid"></div></section>
+
+    <section class="view" data-view="missions" aria-labelledby="missions-title"><div class="view-heading"><div><p class="kicker">35 ORIGINAL RECORDS</p><h2 id="missions-title">Missions.</h2></div><p>Recovered match assignments from the v8.6 database.</p></div><div id="mission-grid" class="mission-grid"></div></section>
+
+    <section class="view" data-view="history" aria-labelledby="history-title"><div class="view-heading"><div><p class="kicker">LOCAL RECORD</p><h2 id="history-title">Match history.</h2></div><button id="clear-history" type="button">Clear history</button></div><div class="history-summary" id="history-summary"></div><div id="history-list" class="history-list"></div></section>
+  </main>
+
+  <footer><p>Clean-room web reconstruction from the preserved AWW v8.6 data files.</p><a href="https://www.alterworldenterprises.com/alterworld-wrestling.html">Read the retrospective</a></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

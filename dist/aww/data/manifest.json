@@ -1,0 +1,10 @@
+{
+  "source": "AlterWorld Wrestling v8.6 Anniversary Edition",
+  "installer_sha1": "a84a275de2aa992fcf7a9b6b46945377559c6848",
+  "records": {
+    "wrestlers": 59,
+    "moves": 45,
+    "tag_moves": 23,
+    "missions": 35
+  }
+}
