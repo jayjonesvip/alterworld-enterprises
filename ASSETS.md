@@ -26,3 +26,11 @@ Final extraction prompt:
 - `dist/assets/ominous-realms.png`: existing Ominous Realms title artwork from the owner’s `jayjonesvip/OminousRealmsRedux` repository (`assets/logo.png`), copied from the finished local game on 2026-09-17; live at https://ominousrealms.com/assets/logo.png.
 
 - `dist/assets/lake-effect-invasion.webp`: current Public Square artwork copied from the owner's `jayjonesvip/alien-invasion-cleveland-rpg` repository (`images/art/street-ontario.webp`) on 2026-09-22; live at https://lakeeffectinvasion.com/images/art/street-ontario.webp. Replaces the old itch.io cover in the product listing.
+
+## Retrospective captures
+
+The following screenshots are direct browser renderings of the owner's archived site on the Internet Archive, captured for the retrospective page on 2026-09-27:
+
+- `dist/assets/retrospective/alterhouse-1997.png`: https://web.archive.org/web/19970405182116/http://www.nacs.net:80/~adrock/
+- `dist/assets/retrospective/alterworld-2001.png`: https://web.archive.org/web/20010721103920/http://www.nacs.net:80/~adrock/
+- `dist/assets/retrospective/homepage-2002.png`: https://web.archive.org/web/20020402061022/http://www.nacs.net:80/~adrock/
