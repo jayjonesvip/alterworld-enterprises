@@ -40,7 +40,7 @@
   </header>
 
   <nav class="tabs" aria-label="Game sections">
-    <button class="tab active" data-tab="book">Book Show</button><button class="tab" data-tab="roster">Roster & Payroll</button><button class="tab" data-tab="market">Talent Market</button><button class="tab" data-tab="analytics">Analytics</button><button class="tab" data-tab="office">Promoter's Office</button>
+    <button class="tab active" data-tab="book">Book Show & Payroll</button><button class="tab" data-tab="market">Talent Market</button><button class="tab" data-tab="analytics">Analytics</button><button class="tab" data-tab="office">Promoter's Office</button>
   </nav>
 
   <section class="view active" id="book">
@@ -62,9 +62,8 @@
     </div>
 
     <div class="panel" style="margin-top:14px"><div class="panel-head"><h2 id="rundownTitle">Tonight's rundown · 3 segments × 10 minutes</h2><span id="bookingStatus" class="eyebrow">Book every segment</span></div><div class="panel-body"><div class="segments" id="segments"></div><div class="error" id="bookingError"></div><button class="run" id="runShow">Go Live</button></div></div>
+    <div class="panel" style="margin-top:14px"><div class="panel-head"><h2>Your locker room</h2><span class="eyebrow" id="payrollLabel"></span></div><div class="panel-body"><div class="budget-box"><b>Weekly payroll budget</b><strong id="budgetValue"></strong><input id="payrollBudget" type="range" min="3000" max="20000" step="250"></div><p class="tiny">Pay changes take effect immediately. Once the promotion has run a show, cutting an established wrestler's salary causes a larger morale hit.</p><div class="table-scroll"><table class="roster"><thead><tr><th></th><th>Wrestler</th><th>Style / Skill</th><th>Alignment</th><th>Popularity / Heat</th><th>Morale</th><th>Weekly Salary</th><th>Status</th></tr></thead><tbody id="rosterBody"></tbody></table></div></div></div>
   </section>
-
-  <section class="view" id="roster"><div class="panel"><div class="panel-head"><h2>Your locker room</h2><span class="eyebrow" id="payrollLabel"></span></div><div class="panel-body"><div class="budget-box"><b>Weekly payroll budget</b><strong id="budgetValue"></strong><input id="payrollBudget" type="range" min="3000" max="20000" step="250"></div><div class="table-scroll"><table class="roster"><thead><tr><th></th><th>Wrestler</th><th>Style / Skill</th><th>Alignment</th><th>Popularity / Heat</th><th>Morale</th><th>Weekly Salary</th><th>Status</th></tr></thead><tbody id="rosterBody"></tbody></table></div></div></div></section>
 
   <section class="view" id="market"><div class="panel"><div class="panel-head"><h2>Talent market</h2><span class="eyebrow">Scout · unlock · negotiate</span></div><div class="panel-body"><p style="color:var(--muted)">New stars can lift ratings—and unsettle wrestlers who thought they were next in line. Signings require room in your payroll budget.</p><div class="market-grid" id="marketGrid"></div></div></div></section>
 
@@ -121,7 +120,7 @@
   function renderRoster(){
     const over=payroll()>state.payrollBudget; $('#payrollLabel').innerHTML=`Weekly payroll <span class="${over?'bad':'good'}">${money(payroll())} / ${money(state.payrollBudget)}</span>`; $('#budgetValue').textContent=money(state.payrollBudget); $('#payrollBudget').value=state.payrollBudget;
     $('#rosterBody').innerHTML=state.roster.map(w=>`<tr><td><div class="portrait" style="--portrait:${w.portrait}"></div></td><td><span class="wname">${w.name}</span><span class="gimmick">“${w.gimmick}”</span></td><td>${w.style}<span class="gimmick">Skill ${w.skill} · CHA ${w.charisma}</span></td><td><select class="alignment" data-align="${w.id}"><option value="face" ${w.alignment==='face'?'selected':''}>Babyface</option><option value="heel" ${w.alignment==='heel'?'selected':''}>Heel</option></select></td><td><b>${w.alignment==='heel'?'Heat':'Popularity'} ${Math.round(draw(w))}</b><div class="bar"><i style="--v:${draw(w)}%;--bar:${w.alignment==='heel'?'var(--red)':'var(--gold)'}"></i></div></td><td><span class="morale ${moraleClass(w.morale)}">${Math.round(w.morale)}</span><div class="bar"><i style="--v:${w.morale}%;--bar:${w.morale>=70?'var(--green)':w.morale>=50?'var(--warn)':'var(--red)'}"></i></div></td><td><div class="salary"><button data-pay="${w.id}" data-delta="-50">−</button><b>${money(w.salary)}</b><button data-pay="${w.id}" data-delta="50">+</button></div></td><td class="tiny">${w.morale<45?'<span class="bad">May quit</span>':draw(w)>45?'<span class="good">Local draw</span>':'Developing'}</td></tr>`).join('');
-    $$('[data-pay]').forEach(b=>b.onclick=()=>{const w=state.roster.find(x=>x.id===b.dataset.pay),d=+b.dataset.delta;w.salary=clamp(w.salary+d,300,2000);w.morale=clamp(w.morale+(d>0?2:-3),0,100);save();renderAll()})
+    $$('[data-pay]').forEach(b=>b.onclick=()=>{const w=state.roster.find(x=>x.id===b.dataset.pay),d=+b.dataset.delta,oldSalary=w.salary;w.salary=clamp(w.salary+d,300,4000);if(w.salary===oldSalary)return;const moraleChange=d>0?2:state.week>1?-9:-3;w.morale=clamp(w.morale+moraleChange,0,100);if(d<0&&state.week>1)state.news.unshift({t:`${w.name} takes a pay cut`,d:`After ${state.week-1} completed show${state.week===2?'':'s'}, the salary reduction hit morale hard (${moraleChange}).`});save();renderAll()})
     $$('[data-align]').forEach(s=>s.onchange=()=>{const w=state.roster.find(x=>x.id===s.dataset.align);w.alignment=s.value;w.morale=clamp(w.morale-3,0,100);state.news.unshift({t:`${w.name} changes direction`,d:`${w.gimmick} is now working as a ${w.alignment==='heel'?'heel':'babyface'}. The adjustment cost a little morale.`});save();renderAll()});
   }
   function renderMarket(){
