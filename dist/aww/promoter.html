@@ -195,9 +195,9 @@
   const balanceEffect=w=>{const gap=Math.abs(w.mic-w.ring);return gap<=10?5:-Math.max(0,gap-30)*.22};
   const gradeFor=q=>q>=88?'A+':q>=80?'A':q>=72?'B+':q>=64?'B':q>=55?'C+':q>=46?'C':'D';
   let resultRevealTimer;
-  function revealResults(recaps){
-    clearTimeout(resultRevealTimer);$('#recap').innerHTML='';$('#continueBtn').disabled=true;$('#resultStatus').textContent='Scoring segment 1';$('#resultCount').textContent=`0 / ${recaps.length}`;$('#resultMeter').style.setProperty('--progress','0%');$('#results').classList.add('open');
-    let index=0;const reveal=()=>{if(index>=recaps.length){$('#resultStatus').textContent='Broadcast report complete';$('#continueBtn').disabled=false;return}const r=recaps[index],article=document.createElement('article');article.innerHTML=`<span class="segment-grade">${gradeFor(r.q)}</span><h3>Segment ${index+1} · ${r.h}</h3><div class="segment-score">${Math.round(r.q)} quality</div><p>${r.p}</p>`;$('#recap').append(article);index++;$('#resultCount').textContent=`${index} / ${recaps.length}`;$('#resultMeter').style.setProperty('--progress',`${index/recaps.length*100}%`);$('#resultStatus').textContent=index<recaps.length?`Scoring segment ${index+1}`:'Broadcast report complete';if(index<recaps.length)resultRevealTimer=setTimeout(reveal,650);else $('#continueBtn').disabled=false};
+  function revealResults(recaps,overallGrade){
+    clearTimeout(resultRevealTimer);$('#recap').innerHTML='';$('#grade').textContent='';$('#grade').setAttribute('aria-hidden','true');$('#continueBtn').disabled=true;$('#resultStatus').textContent='Scoring segment 1';$('#resultCount').textContent=`0 / ${recaps.length}`;$('#resultMeter').style.setProperty('--progress','0%');$('#results').classList.add('open');
+    const finish=()=>{$('#grade').textContent=overallGrade;$('#grade').removeAttribute('aria-hidden');$('#resultStatus').textContent='Broadcast report complete';$('#continueBtn').disabled=false};let index=0;const reveal=()=>{if(index>=recaps.length){finish();return}const r=recaps[index],article=document.createElement('article');article.innerHTML=`<span class="segment-grade">${gradeFor(r.q)}</span><h3>Segment ${index+1} · ${r.h}</h3><div class="segment-score">${Math.round(r.q)} quality</div><p>${r.p}</p>`;$('#recap').append(article);index++;$('#resultCount').textContent=`${index} / ${recaps.length}`;$('#resultMeter').style.setProperty('--progress',`${index/recaps.length*100}%`);if(index<recaps.length){$('#resultStatus').textContent=`Scoring segment ${index+1}`;resultRevealTimer=setTimeout(reveal,650)}else finish()};
     resultRevealTimer=setTimeout(reveal,350);
   }
   function develop(w,focus){if(focus==='mic')w.mic=clamp(w.mic+1,0,100);if(focus==='ring')w.ring=clamp(w.ring+1,0,100);if(Math.abs(w.mic-w.ring)>=60)w.morale=clamp(w.morale-2,0,100)}
@@ -227,9 +227,9 @@
     state.history.push({week:state.week,cash:state.cash,rating:state.rating,attendance:seats,profit});
     state.news.unshift({t:showQ>75?'Local wrestling show earns strong word of mouth':showQ>55?'Saturday Night Collision holds steady':'Uneven broadcast tests viewer patience',d:`Week ${state.week}: ${seats} fans attended and the show scored ${Math.round(showQ)} quality.`});state.news=state.news.slice(0,8);
     const grade=gradeFor(showQ);
-    $('#grade').textContent=grade;$('#titleMoment').textContent=titleMoment;$('#resultTitle').textContent=`Week ${state.week}: Saturday Night Collision`;$('#resultSummary').textContent=showQ>70?'Cleveland is starting to talk.':showQ>50?'A respectable night on public access.':'The locker room knows the next show must be better.';
+    $('#titleMoment').textContent=titleMoment;$('#resultTitle').textContent=`Week ${state.week}: Saturday Night Collision`;$('#resultSummary').textContent=showQ>70?'Cleveland is starting to talk.':showQ>50?'A respectable night on public access.':'The locker room knows the next show must be better.';
     $('#resultKpis').innerHTML=[['Show quality',Math.round(showQ)],['Attendance',`${seats} / ${venue().capacity}`],['TV rating',state.rating.toFixed(2)],['Net',`${profit>=0?'+':''}${money(profit)}`],['New fans',state.fans.toLocaleString()]].map(x=>`<div><small>${x[0]}</small><b class="${x[0]==='Net'?(profit>=0?'positive':'negative'):''}">${x[1]}</b></div>`).join('');
-    clearCard();revealResults(recaps);save();
+    clearCard();revealResults(recaps,grade);save();
   }
   function lineChart(canvas,series){
     const dpr=devicePixelRatio||1,rect=canvas.getBoundingClientRect();canvas.width=rect.width*dpr;canvas.height=rect.height*dpr;const c=canvas.getContext('2d');c.scale(dpr,dpr);const W=rect.width,H=rect.height,p={l:44,r:16,t:18,b:28};c.clearRect(0,0,W,H);c.strokeStyle='#292e37';c.fillStyle='#858d99';c.font='10px system-ui';for(let i=0;i<5;i++){let y=p.t+(H-p.t-p.b)*i/4;c.beginPath();c.moveTo(p.l,y);c.lineTo(W-p.r,y);c.stroke()}
